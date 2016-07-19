@@ -45,10 +45,8 @@ public class FormNum1 extends JFrame {
         form1.add(cityToTextField);
         actionPerformed = new InformationFromFormOne();
         conferm.addActionListener(actionPerformed);
-
         clearConfermation.addActionListener(actionPerformed);
     }
-
 
 
     class InformationFromFormOne implements ActionListener{
@@ -60,9 +58,8 @@ public class FormNum1 extends JFrame {
                     String cityFrom   = (cityFromTextField.getText());
                     String cityTo  = (cityToTextField.getText());
                     suggestion = new Suggestion(dateOfDeparture, dateOfArrival, true, cityFrom, cityTo);
-
-                    setVisible(false);
-                    form1.dispose();
+                    form1.setVisible(false);
+                    FormNum2 form2 = new FormNum2();
                 }
 
                 if (e.getSource() == clearConfermation){
