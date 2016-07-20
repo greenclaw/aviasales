@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7870308b-6a9d-4c8c-b866-2b3477d34250" name="Default" comment="If you code c#,you drink coca-cola! &#10;Java is the best">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com/company/Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/teamProject/com/company/FormNum2$SelectedTicket.class" afterPath="$PROJECT_DIR$/out/production/teamProject/com/company/FormNum2$SelectedTicket.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/teamProject/com/company/FormNum2.class" afterPath="$PROJECT_DIR$/out/production/teamProject/com/company/FormNum2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/teamProject/com/company/FormNum3.class" afterPath="$PROJECT_DIR$/out/production/teamProject/com/company/FormNum3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/teamProject/com/company/Main.class" afterPath="$PROJECT_DIR$/out/production/teamProject/com/company/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/teamProject/com/company/SelectTicket.class" afterPath="$PROJECT_DIR$/out/production/teamProject/com/company/SelectTicket.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/teamProject/com/company/Suggestion.class" afterPath="$PROJECT_DIR$/out/production/teamProject/com/company/Suggestion.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/teamProject/com/company/Ticket.class" afterPath="$PROJECT_DIR$/out/production/teamProject/com/company/Ticket.class" />
+    <list default="true" id="7870308b-6a9d-4c8c-b866-2b3477d34250" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/DataBase.java" afterPath="$PROJECT_DIR$/src/com/company/DataBase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/teamProject.iml" afterPath="$PROJECT_DIR$/teamProject.iml" />
     </list>
     <ignored path="teamProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,7 +32,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DataBase.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DataBase.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/DataBase.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -60,8 +49,8 @@
       <file leaf-file-name="FormNum1.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/FormNum1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-390">
-              <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+            <state relative-caret-position="259">
+              <caret line="69" column="33" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -95,7 +84,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/com/company/Test.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="675">
@@ -854,8 +843,16 @@
       <workItem from="1468921190581" duration="789000" />
       <workItem from="1469011502878" duration="4259000" />
       <workItem from="1469043982047" duration="6000" />
-      <workItem from="1469045837325" duration="5145000" />
+      <workItem from="1469045837325" duration="5424000" />
     </task>
+    <task id="LOCAL-00001" summary="If you code c#,you drink coca-cola! &#10;Java is the best">
+      <created>1469051405621</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1469051405621</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -891,7 +888,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42013000" />
+    <option name="totallyTimeSpent" value="42292000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1367,10 +1364,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/company/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#256#257#0" expanded="true" />
+            <element signature="e#314#315#0" expanded="true" />
+            <element signature="e#366#367#0" expanded="true" />
+            <element signature="e#425#426#0" expanded="true" />
+            <element signature="e#478#479#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/FormNum1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-390">
-          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+        <state relative-caret-position="259">
+          <caret line="69" column="33" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1385,22 +1398,6 @@
             <element signature="imports" expanded="true" />
             <marker date="1469050310000" expanded="true" signature="454:474" ph="select * FRO... flight" />
             <marker date="1469050310000" expanded="true" signature="983:1003" ph="select * fro... flight" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/company/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#256#257#0" expanded="true" />
-            <element signature="e#314#315#0" expanded="true" />
-            <element signature="e#366#367#0" expanded="true" />
-            <element signature="e#425#426#0" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
-            <element signature="e#544#545#0" expanded="true" />
           </folding>
         </state>
       </provider>
