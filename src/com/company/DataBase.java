@@ -10,8 +10,14 @@ import java.util.Random;
 
 public class DataBase {
 	public static Statement connection ;
+	public static Connection dbConnection = null;
+	public static ResultSet getFlights() throws SQLException {
+		connection = dbConnection.createStatement();
+		ResultSet result = connection.executeQuery("select * FROM flight");
+		return result;
+	}
 	public static void getConnection() throws SQLException   {
-		Connection dbConnection = null;
+
 		try {
 			Class.forName("org.sqlite.JDBC");
 			dbConnection = DriverManager.getConnection("jdbc:sqlite:aviasales.db");
@@ -19,9 +25,7 @@ public class DataBase {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 		    System.exit(0);
 		}
-		
 		System.out.println("Connection succesful!");
-		
 		connection = dbConnection.createStatement();
 		String[][] cities = new String[0][0];
 		ResultSet result = connection.executeQuery("select * from flight");
@@ -40,4 +44,3 @@ public class DataBase {
 //			System.out.println(id + " " + depCity + " " + destCity);
 		}		
 	}
-}
