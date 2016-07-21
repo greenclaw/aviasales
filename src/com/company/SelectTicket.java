@@ -21,7 +21,7 @@ import java.util.LinkedList;
 public class SelectTicket {
     Statement connection = null;
     ResultSet data = null;
-    LinkedList<Ticket> list = new LinkedList<>();
+    static LinkedList<Ticket> list = new LinkedList<>();
     int price;
     public void getInfo(Suggestion suggestion) throws SQLException {
         String cityFrom = suggestion.cityFrom;
@@ -42,6 +42,10 @@ public class SelectTicket {
                     suggestion.roundTrip, newData.getString("dept_city"), newData.getString("dest_city"));
             list.add(ticket);
         }
+
+    }
+    public static Ticket getTicket(int i){
+        return list.get(i);
     }
 }
 

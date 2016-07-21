@@ -11,6 +11,10 @@ public class Ticket {
     String cityFrom;
     String cityTo;
 
+
+    public Ticket() {
+    }
+
     public Ticket(int price, String dateOfDeparture, String dateOfArrival, Boolean roundTrip, String cityFrom, String cityTo) {
         this.price = price;
         this.dateOfDeparture = dateOfDeparture;
@@ -19,4 +23,5 @@ public class Ticket {
         this.cityFrom = cityFrom;
         this.cityTo = cityTo;
     }
+
 }
