@@ -2,5 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/varna/workspace/project/aviasales/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/varna/workspace/project/aviasales/sqlite-jdbc-3.8.11.2.jar"/>
 	<classpathentry kind="output" path="out/production/teamProject"/>
 </classpath>
