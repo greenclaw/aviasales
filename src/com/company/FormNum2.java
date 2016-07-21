@@ -16,7 +16,7 @@ public class FormNum2 extends JFrame{
     ActionListener actionPerformed;
     Ticket[] tickets;
     JButton[] buttons;
-    public FormNum2()  {
+    public FormNum2() throws java.lang.InterruptedException{
         form2.setSize(1200,600);
             //frame.setResizable(false);
         form2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,7 +31,9 @@ public class FormNum2 extends JFrame{
         buttons = new JButton[SelectTicket.getCount()];
         buttons[0] = new JButton();
         tickets = SelectTicket.getTicket();
-        for(int i = 0;i<5;i++)
+        Thread.sleep(1000);
+
+        for(int i = 0;i<SelectTicket.getCount();i++)
         {
             ticketsLables[i] = new JLabel(tickets[i].dateOfDeparture + "  " + tickets[i].dateOfDeparture + "  " + tickets[i].cityFrom + "  " + tickets[i].cityTo);
             buttons[i]= new JButton("Button "+ i);
@@ -44,7 +46,7 @@ public class FormNum2 extends JFrame{
         form2.setVisible(true);
        // form2.add(conferm);
         actionPerformed = new SelectedTicket();
-        for(int i = 0;i<5;i++)
+        for(int i = 0;i<SelectTicket.getCount();i++)
         {
             buttons[i].addActionListener(actionPerformed);
         }
@@ -55,7 +57,7 @@ public class FormNum2 extends JFrame{
 
     class SelectedTicket implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for(int i = 0;i<5;i++) {
+            for(int i = 0;i<SelectTicket.getCount();i++) {
                 if (e.getSource() == buttons[i]) {
                     String dateOfDeparture = (oneTicket.dateOfDeparture);
                     String dateOfArrival = (oneTicket.dateOfArrival);
