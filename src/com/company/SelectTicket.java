@@ -24,36 +24,37 @@ public class SelectTicket {
   static  LinkedList<Ticket> list = new LinkedList<Ticket>();
     int price;
     public void getInfo(Suggestion suggestion) throws SQLException {
+    	connection = DataBase.dbConnection.createStatement();
         String cityFrom = suggestion.cityFrom;
         String cityTo = suggestion.cityTo;
         String firstParam = getSqlStraight(cityFrom, cityTo);
-        ResultSet data = connection.executeQuery(firstParam);
+       ResultSet data = connection.executeQuery(firstParam);
         if (data != null) {
-            Ticket ticket = new Ticket(data.getInt("price"), data.getString("dept_date"), data.getString("dest_date"),
-                    suggestion.roundTrip, data.getString("dept_city"), data.getString("dest_city"));
+            Ticket ticket = new Ticket(data.getInt("price"), data.getString("dep_date"), data.getString("dest_date"),
+                    suggestion.roundTrip, data.getString("dep_city"), data.getString("dest_city"));
             while (data.next()) {
-                ticket = new Ticket(data.getInt("price"), data.getString("dept_date"), data.getString("dest_date"),
-                        suggestion.roundTrip, data.getString("dept_city"), data.getString("dest_city"));
-                if (ticket.dataCheck())
+                ticket = new Ticket(data.getInt("price"), data.getString("dep_date"), data.getString("dest_date"),
+                        suggestion.roundTrip, data.getString("dep_city"), data.getString("dest_city"));
+                //if (ticket.dataCheck())
                     list.add(ticket);
             }
         }
         data = connection.executeQuery(getSql1Transfer(cityFrom, cityTo));
         if (data != null) {
-            Ticket firstTicket = new Ticket(data.getInt("price"), data.getString("dept_date"), data.getString("dest_date"),
-                    suggestion.roundTrip, data.getString("dept_city"), data.getString("dest_city"));
+            Ticket firstTicket = new Ticket(data.getInt("price"), data.getString("dep_date"), data.getString("dest_date"),
+                    suggestion.roundTrip, data.getString("dep_city"), data.getString("dest_city"));
             String secondCityFrom = data.getString("dest_city");
             String secondParam = getSqlStraight(secondCityFrom, cityTo);
             ResultSet newData = connection.executeQuery(secondParam);
             if (newData != null) {
-                Ticket secondTicket = new Ticket(newData.getInt("price"), newData.getString("dept_date"), newData.getString("dest_date"),
-                        suggestion.roundTrip, newData.getString("dept_city"), newData.getString("dest_city"));
+                Ticket secondTicket = new Ticket(newData.getInt("price"), newData.getString("dep_date"), newData.getString("dest_date"),
+                        suggestion.roundTrip, newData.getString("dep_city"), newData.getString("dest_city"));
                 Ticket doubleTicket = new DoubleTicket(firstTicket, secondTicket);
                 if (doubleTicket.dataCheck())
                     list.add(doubleTicket);
                 while (data.next()) {
-                    secondTicket = new Ticket(newData.getInt("price"), newData.getString("dept_date"), newData.getString("dest_date"),
-                            suggestion.roundTrip, newData.getString("dept_city"), newData.getString("dest_city"));
+                    secondTicket = new Ticket(newData.getInt("price"), newData.getString("dep_date"), newData.getString("dest_date"),
+                            suggestion.roundTrip, newData.getString("dep_city"), newData.getString("dest_city"));
                     doubleTicket = new DoubleTicket(firstTicket, secondTicket);
                     if (doubleTicket.dataCheck())
                         list.add(doubleTicket);
@@ -65,14 +66,14 @@ public class SelectTicket {
     }
 
     private String getSqlStraight (String cityFrom, String cityTo){
-        return "select id, dep_city, dest_city, price, dest_date, dept_date  from flight " +
+        return "select dep_city, dest_city, price, dest_date, dep_date  from flight " +
                 "inner join company on flight.company_id = company.id inner join ticket on flight.id = ticket.flight_id" +
-                " where dep_city=" + cityFrom +"and dest_city=" + cityTo + "order by price ASC";
+                " where dep_city='" + cityFrom +"' and dest_city='" + cityTo + "' order by price ASC";
     }
     private String getSql1Transfer (String cityFrom, String cityTo) {
-        return "Select id, dep_city, dest_city from flight " +
+        return "select  dep_city, dest_city, price, dest_date, dep_date from flight " +
                 "inner join company on flight.company_id = company.id inner join ticket on flight.id = ticket.flight_id" +
-                "WHERE dep_city=" + cityFrom + "dest_city NOT LIKE" + cityTo;
+                " where dep_city='" + cityFrom + "' and dest_city NOT LIKE '" + cityTo + "'";
     }
 
 

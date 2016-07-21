@@ -76,8 +76,8 @@ public class FormNum1 extends JFrame {
                     } catch (SQLException e1) {
                         e1.printStackTrace();
                     }
-                    if(doMatch(dateOfArrival) ){
-                        if(doMatch(dateOfDeparture)) {
+                    //if(doMatch(dateOfArrival) ){
+                      //  if(doMatch(dateOfDeparture)) {
                             form1.setVisible(false);
                             try
                             {
@@ -86,13 +86,13 @@ public class FormNum1 extends JFrame {
                             catch (InterruptedException e1)
                             {
 
-                            }
+                        //    }
 
                         }
-                        else{JOptionPane.showMessageDialog(form1, "Date must be in format **/**/****");}
-                    }
-                    else{JOptionPane.showMessageDialog(form1, "Date must be in format **/**/****");
-                    }
+                      //  else{JOptionPane.showMessageDialog(form1, "Date must be in format **/**/****");}
+                    //}
+                    //else{JOptionPane.showMessageDialog(form1, "Date must be in format **/**/****");
+                    //}
                 }
 
 
