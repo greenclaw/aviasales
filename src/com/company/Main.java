@@ -7,7 +7,15 @@ import java.text.Normalizer;
 
 public class Main extends Thread{
     public static void main(String[] args) throws SQLException {
-    	DataBase.getConnection();
-        FormNum1 form1 = new FormNum1();
+    	//DataBase.getConnection();
+        try
+        {
+            FormNum1 form1 = new FormNum1();
+        }
+        catch (InterruptedException e1)
+        {
+
+        }
+
     }
 }

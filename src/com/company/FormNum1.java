@@ -29,7 +29,7 @@ public class FormNum1 extends JFrame {
     Boolean n = false;
     JFrame form1 = new JFrame("form1");
     ActionListener actionPerformed;
-    public FormNum1(){
+    public FormNum1()throws InterruptedException{
         form1.setVisible(true);
         form1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         form1.setSize(1200,250);
@@ -79,7 +79,15 @@ public class FormNum1 extends JFrame {
                     if(doMatch(dateOfArrival) ){
                         if(doMatch(dateOfDeparture)) {
                             form1.setVisible(false);
-                            FormNum2 form2 = new FormNum2();
+                            try
+                            {
+                                FormNum2 form2 = new FormNum2();
+                            }
+                            catch (InterruptedException e1)
+                            {
+
+                            }
+
                         }
                         else{JOptionPane.showMessageDialog(form1, "Date must be in format **/**/****");}
                     }

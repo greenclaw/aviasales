@@ -26,39 +26,65 @@ public class SelectTicket {
     public void getInfo(Suggestion suggestion) throws SQLException {
         String cityFrom = suggestion.cityFrom;
         String cityTo = suggestion.cityTo;
-        /*
-        String string = "SELECT id, dep_city, dest_city, price, dest_date, dept_date, FROM flight WHERE dep_city=" + cityFrom +
-                "and dest_city=" + cityTo + "order by price ASC";
-        ResultSet data = connection.executeQuery(string);
-        while (data.next()) {
+        String firstParam = getSqlStraight(cityFrom, cityTo);
+        ResultSet data = connection.executeQuery(firstParam);
+        if (data != null) {
             Ticket ticket = new Ticket(data.getInt("price"), data.getString("dept_date"), data.getString("dest_date"),
                     suggestion.roundTrip, data.getString("dept_city"), data.getString("dest_city"));
-            list.add(ticket);
+            while (data.next()) {
+                ticket = new Ticket(data.getInt("price"), data.getString("dept_date"), data.getString("dest_date"),
+                        suggestion.roundTrip, data.getString("dept_city"), data.getString("dest_city"));
+                if (ticket.dataCheck())
+                    list.add(ticket);
+            }
         }
-        data = connection.executeQuery("Select id, dep_city, dest_city FROM flight WHERE dep_city=" + cityFrom + "dest_city NOT LIKE" + cityTo);
-        while (data.next()){
-            cityFrom = data.getString("dest_city");
-            ResultSet newData = connection.executeQuery(string);
-            Ticket ticket = new Ticket(newData.getInt("price"), newData.getString("dept_date"), newData.getString("dest_date"),
-                    suggestion.roundTrip, newData.getString("dept_city"), newData.getString("dest_city"));
-            list.add(ticket);
+        data = connection.executeQuery(getSql1Transfer(cityFrom, cityTo));
+        if (data != null) {
+            Ticket firstTicket = new Ticket(data.getInt("price"), data.getString("dept_date"), data.getString("dest_date"),
+                    suggestion.roundTrip, data.getString("dept_city"), data.getString("dest_city"));
+            String secondCityFrom = data.getString("dest_city");
+            String secondParam = getSqlStraight(secondCityFrom, cityTo);
+            ResultSet newData = connection.executeQuery(secondParam);
+            if (newData != null) {
+                Ticket secondTicket = new Ticket(newData.getInt("price"), newData.getString("dept_date"), newData.getString("dest_date"),
+                        suggestion.roundTrip, newData.getString("dept_city"), newData.getString("dest_city"));
+                Ticket doubleTicket = new DoubleTicket(firstTicket, secondTicket);
+                if (doubleTicket.dataCheck())
+                    list.add(doubleTicket);
+                while (data.next()) {
+                    secondTicket = new Ticket(newData.getInt("price"), newData.getString("dept_date"), newData.getString("dest_date"),
+                            suggestion.roundTrip, newData.getString("dept_city"), newData.getString("dest_city"));
+                    doubleTicket = new DoubleTicket(firstTicket, secondTicket);
+                    if (doubleTicket.dataCheck())
+                        list.add(doubleTicket);
+                }
+            }
+        }
 
-        }*/
-        Ticket[] tickets = new Ticket[10];
-        for (int i = 0;i<10;i++)
-        {
-            list.add(new Ticket(1000,"12/12/2016","15/12/2016",false,"City"+i,"City"+(i)));
-        }
-        int a = 0;
 
     }
+
+    private String getSqlStraight (String cityFrom, String cityTo){
+        return "select id, dep_city, dest_city, price, dest_date, dept_date  from flight " +
+                "inner join company on flight.company_id = company.id inner join ticket on flight.id = ticket.flight_id" +
+                " where dep_city=" + cityFrom +"and dest_city=" + cityTo + "order by price ASC";
+    }
+    private String getSql1Transfer (String cityFrom, String cityTo) {
+        return "Select id, dep_city, dest_city from flight " +
+                "inner join company on flight.company_id = company.id inner join ticket on flight.id = ticket.flight_id" +
+                "WHERE dep_city=" + cityFrom + "dest_city NOT LIKE" + cityTo;
+    }
+
+
     public static Ticket[] getTicket()
     {
-        Ticket[] a = new Ticket[10];
-        for (int i = 0;i<5;i++)
+        int size = list.size();
+        Ticket[] a = new Ticket[size];
+        for (int i = 0; i < size ;i++)
         {
             a[i] = list.pop();
         }
+        QSort.sort(a,0,size);
         return a;
     }
     public static int getCount()
