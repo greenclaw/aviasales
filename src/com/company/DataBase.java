@@ -24,10 +24,11 @@ public class DataBase {
 		
 		connection = dbConnection.createStatement();
 		
-		ResultSet result = DataBase.connection.executeQuery("select * from temp");
+		ResultSet result = DataBase.connection.executeQuery("select * from flight");
 		int i = 0;
 		Random rand = new Random();
-		
+	}
+}
 //		for (i = 0; i < 300; i++){
 //			int idFlight = rand.nextInt(300) + 1;
 //			int depDay = rand.nextInt(29)+1;
@@ -115,7 +116,7 @@ public class DataBase {
 //			System.out.println(sql);
 //			connection.executeUpdate(sql);
 //			System.out.println(flight[i][0] + " " + flight[i][1] + " " + flight[i][2] + " " + flight[i][3]);
-		}
+//		}
 	
 		
 		
@@ -140,5 +141,5 @@ public class DataBase {
 //			connection.executeUpdate(sql);
 //			System.out.println(id + " " + depCity + " " + destCity);
 //		}
-}
+
 
