@@ -4,7 +4,6 @@ import org.junit.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.company.DataBase.connection;
 import static org.junit.Assert.*;
 
 /**
