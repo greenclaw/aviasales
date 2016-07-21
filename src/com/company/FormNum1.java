@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -61,7 +62,7 @@ public class FormNum1 extends JFrame {
     }
 
 
-    class InformationFromFormOne implements ActionListener{
+    class InformationFromFormOne implements ActionListener  {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == conferm){
                     String dateOfDeparture = (dateofDepartureTextField.getText());
@@ -69,6 +70,12 @@ public class FormNum1 extends JFrame {
                     String cityFrom   = (cityFromTextField.getText());
                     String cityTo  = (cityToTextField.getText());
                     suggestion = new Suggestion(dateOfDeparture, dateOfArrival, true, cityFrom, cityTo);
+                    SelectTicket selectTicket = new SelectTicket();
+                    try {
+                        selectTicket.getInfo(suggestion);
+                    } catch (SQLException e1) {
+                        e1.printStackTrace();
+                    }
                     if(doMatch(dateOfArrival) ){
                         if(doMatch(dateOfDeparture)) {
                             form1.setVisible(false);

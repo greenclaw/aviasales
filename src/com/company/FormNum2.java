@@ -1,5 +1,4 @@
 package com.company;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,6 +14,7 @@ public class FormNum2 extends JFrame{
     static Ticket selectedTicket;
     JLabel ticket1;
     ActionListener actionPerformed;
+    Ticket[] tickets;
     public FormNum2()  {
         form2.setSize(1200,600);
             //frame.setResizable(false);
@@ -22,30 +22,52 @@ public class FormNum2 extends JFrame{
         form2.setLocationRelativeTo(null);
         form2.setLocationRelativeTo(null);
         form2.setLayout(new FlowLayout());
-        ticket1 = new JLabel(oneTicket.dateOfDeparture + " " + oneTicket.dateOfArrival + " " + oneTicket.cityFrom + " " + oneTicket.cityTo);
+        int countOfTickets = 0;
+        countOfTickets = SelectTicket.getCount();
+        JLabel[] ticketsLables = new JLabel[SelectTicket.getCount()];
+        ticketsLables[0] = new JLabel();
+        tickets = new Ticket[SelectTicket.getCount()];
+        JButton[] buttons = new JButton[SelectTicket.getCount()];
+        buttons[0] = new JButton();
+        tickets = SelectTicket.getTicket();
+        for(int i = 0;i<5;i++)
+        {
+            ticketsLables[i] = new JLabel(tickets[i].dateOfDeparture + "  " + tickets[i].dateOfDeparture + "  " + tickets[i].cityFrom + "  " + tickets[i].cityTo);
+            buttons[i]= new JButton();
+            form2.add(ticketsLables[i]);
+            form2.add(buttons[i]);
+        }
+
+        // ticket1 = new JLabel(oneTicket.dateOfDeparture + " " + oneTicket.dateOfArrival + " " + oneTicket.cityFrom + " " + oneTicket.cityTo);
         conferm = new JButton("Bue this ticket");
         form2.setVisible(true);
-        form2.add(ticket1);
-        form2.add(conferm);
+
         actionPerformed = new SelectedTicket();
+
+
         conferm.addActionListener(actionPerformed);
         }
 
     class SelectedTicket implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
-            if (e.getSource() == conferm){
+            for(int i = 0;i<SelectTicket.getCount();i++)
+            {
+
+            if (e.getSource() == tickets[i]){
                 String dateOfDeparture = (oneTicket.dateOfDeparture);
                 String dateOfArrival   = (oneTicket.dateOfArrival);
                 String cityFrom   = (oneTicket.cityFrom);
                 String cityTo  = (oneTicket.cityTo);
                 selectedTicket = new Ticket(400,dateOfDeparture, dateOfArrival, true,  cityFrom, cityTo);
                 form2.setVisible(false);
-                FormNum3 form3 = new FormNum3();
+
             }
 
-
+            }
+            FormNum3 form3 = new FormNum3();
 }
-    }}
+    }
+}
 
 
