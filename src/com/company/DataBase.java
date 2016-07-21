@@ -21,6 +21,7 @@ public class DataBase {
 		System.out.println("Connection succesful!");
 	}
 	
+	// get table flight
 	public static ResultSet getFlights() throws SQLException {
 		Statement connection;
 		connection = dbConnection.createStatement();
