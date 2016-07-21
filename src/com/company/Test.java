@@ -6,9 +6,6 @@ import java.sql.SQLException;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by antonzalaldinov on 20.07.16.
- */
 public class Test {
 
 
