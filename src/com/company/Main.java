@@ -12,7 +12,28 @@ public class Main extends Thread{
     public static void main(String[] args) throws SQLException {
 //        FormNum1 form1 = new FormNum1();
     	DataBase.getConnection();
+    	DataBase.connection = DataBase.dbConnection.createStatement();
     	
-		
-    }
-}
+		String[][] cities = new String[0][3];
+		ResultSet result = DataBase.connection.executeQuery("select * from temp");
+		int i = 0;
+		Random rand = new Random();
+
+//		while(i < 10) {
+//			i++;
+//			int id = result.getInt("id");
+//			String city = result.getString("city");
+//			String airoport = result.getString("airoport");
+//			result.next();
+//			int randNumber = rand.nextInt(200) + 1;
+//			System.out.println(randNumber);
+//			String sql = "insert into company(id,name) "
+//					+ "select id,airport from temp "
+//					+ "where id=" + randNumber;
+//			String sql = "update flight set dep_city=(select dest_city "
+//					+ "from flight where id=" + randNumber + ")";
+//			DataBase.connection.executeUpdate(sql);
+//			System.out.println(id + " " + city + " " + airoport);
+//		}
+//    }
+//}
