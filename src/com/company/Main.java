@@ -10,14 +10,14 @@ import java.util.Random;
 public class Main extends Thread{
 	
     public static void main(String[] args) throws SQLException {
-//        FormNum1 form1 = new FormNum1();
     	DataBase.getConnection();
-    	DataBase.connection = DataBase.dbConnection.createStatement();
+        FormNum1 form1 = new FormNum1();
     	
-		String[][] cities = new String[0][3];
-		ResultSet result = DataBase.connection.executeQuery("select * from temp");
-		int i = 0;
-		Random rand = new Random();
+    }
+}
+		
+		//		int i = 0;
+//		Random rand = new Random();
 
 //		while(i < 10) {
 //			i++;
