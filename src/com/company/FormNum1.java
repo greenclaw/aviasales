@@ -60,6 +60,10 @@ public class FormNum1 extends JFrame {
         clearConfermation.addActionListener(actionPerformed);
     }
 
+    public static boolean doMatchCity(String cityFrom) {
+        return false;
+    }
+
 
     class InformationFromFormOne implements ActionListener{
             public void actionPerformed(ActionEvent e) {

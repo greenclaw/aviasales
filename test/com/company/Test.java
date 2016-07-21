@@ -4,6 +4,7 @@ import org.junit.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static com.company.DataBase.connection;
 import static org.junit.Assert.*;
 
 /**
@@ -51,6 +52,17 @@ public class Test {
         String dep_city = result.getString("dep_city");
         assertNotNull(dep_city);
     }
+  //  @org.junit.Test
+ ////   public void checkCity () throws SQLException {
+ //       DataBase.getConnection();
+  ///      String cityFrom   = "worstCityOfAfrica";
+       // ResultSet data = connection.executeQuery("Select dep_city FROM flight WHERE dep_city=" + cityFrom );
+   //     if (data == null)
+     //       assertFalse(FormNum1.doMatchCity(cityFrom));
+       // else
+         //   assertTrue(FormNum1.doMatchCity(cityFrom));
+
+    ////}
 
 
 }
