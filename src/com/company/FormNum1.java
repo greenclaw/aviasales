@@ -32,7 +32,7 @@ public class FormNum1 extends JFrame {
     public FormNum1()throws InterruptedException{
         form1.setVisible(true);
         form1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        form1.setSize(1200,250);
+        form1.setSize(920,250);
         //setResizable(false);
         form1.setLocationRelativeTo(null);
         form1.setLayout(new FlowLayout());
@@ -46,16 +46,16 @@ public class FormNum1 extends JFrame {
         dateofArrivalTextField = new JTextField(10);
         cityFromTextField = new JTextField(10);
         cityToTextField = new JTextField(10);
-        form1.add(clearConfermation);
-        form1.add(conferm);
         form1.add(dateofDeparture);
         form1.add(dateofDepartureTextField);
-        form1.add(dateofArrival);
-        form1.add(dateofArrivalTextField);
+       // form1.add(dateofArrival);
+       // form1.add(dateofArrivalTextField);
         form1.add(cityFrom);
         form1.add(cityFromTextField);
         form1.add(cityTo);
         form1.add(cityToTextField);
+        form1.add(clearConfermation);
+        form1.add(conferm);
         actionPerformed = new InformationFromFormOne();
         conferm.addActionListener(actionPerformed);
         clearConfermation.addActionListener(actionPerformed);
@@ -78,6 +78,16 @@ public class FormNum1 extends JFrame {
                     }
                     //if(doMatch(dateOfArrival) ){
                       //  if(doMatch(dateOfDeparture)) {
+                    
+                    try
+                    {
+                    	Thread.sleep(2000);
+                    }
+                    catch(InterruptedException e1)
+                    {
+                    	
+                    }
+                    
                             form1.setVisible(false);
                             try
                             {

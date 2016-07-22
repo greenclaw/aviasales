@@ -20,7 +20,9 @@ import java.util.LinkedList;
  */
 public class SelectTicket {
     Statement connection = null;
+    Statement connection1 = null;
     ResultSet data = null;
+    static int size = 0;
   static  LinkedList<Ticket> list = new LinkedList<Ticket>();
     int price;
     public void getInfo(Suggestion suggestion) throws SQLException {
@@ -28,37 +30,54 @@ public class SelectTicket {
         String cityFrom = suggestion.cityFrom;
         String cityTo = suggestion.cityTo;
         String firstParam = getSqlStraight(cityFrom, cityTo);
-       ResultSet data = connection.executeQuery(firstParam);
-        if (data != null) {
+        ResultSet data = connection.executeQuery(firstParam);
+      
+        if (data.next()) {
             Ticket ticket = new Ticket(data.getInt("price"), data.getString("dep_date"), data.getString("dest_date"),
                     suggestion.roundTrip, data.getString("dep_city"), data.getString("dest_city"));
+          //  if (ticket.dataCheck(suggestion.dateOfDeparture))
+            //{
+            list.add(ticket);
+            size++;
+          //  }
+           
             while (data.next()) {
                 ticket = new Ticket(data.getInt("price"), data.getString("dep_date"), data.getString("dest_date"),
                         suggestion.roundTrip, data.getString("dep_city"), data.getString("dest_city"));
-                //if (ticket.dataCheck())
-                    list.add(ticket);
+               // if (ticket.dataCheck(suggestion.dateOfDeparture))
+                //{
+                	 list.add(ticket);
+                     size++;
+               // }
+                   
             }
         }
+        connection1 = DataBase.dbConnection.createStatement();
         data = connection.executeQuery(getSql1Transfer(cityFrom, cityTo));
-        if (data != null) {
+        while (data.next()) {
             Ticket firstTicket = new Ticket(data.getInt("price"), data.getString("dep_date"), data.getString("dest_date"),
                     suggestion.roundTrip, data.getString("dep_city"), data.getString("dest_city"));
             String secondCityFrom = data.getString("dest_city");
             String secondParam = getSqlStraight(secondCityFrom, cityTo);
-            ResultSet newData = connection.executeQuery(secondParam);
-            if (newData != null) {
+            ResultSet newData = connection1.executeQuery(secondParam);
+            while (newData.next()) {
                 Ticket secondTicket = new Ticket(newData.getInt("price"), newData.getString("dep_date"), newData.getString("dest_date"),
                         suggestion.roundTrip, newData.getString("dep_city"), newData.getString("dest_city"));
                 Ticket doubleTicket = new DoubleTicket(firstTicket, secondTicket);
-                if (doubleTicket.dataCheck())
-                    list.add(doubleTicket);
-                while (data.next()) {
+                //if (doubleTicket.dataCheck(suggestion.dateOfDeparture))
+                //{
+                	list.add(doubleTicket);
+                    size++;
+               // }
+                    
+               /* while (data.next()) {
                     secondTicket = new Ticket(newData.getInt("price"), newData.getString("dep_date"), newData.getString("dest_date"),
                             suggestion.roundTrip, newData.getString("dep_city"), newData.getString("dest_city"));
                     doubleTicket = new DoubleTicket(firstTicket, secondTicket);
-                    if (doubleTicket.dataCheck())
+                   //if (doubleTicket.dataCheck())                    
                         list.add(doubleTicket);
-                }
+                    size++;*/
+               // }
             }
         }
 
@@ -76,10 +95,11 @@ public class SelectTicket {
                 " where dep_city='" + cityFrom + "' and dest_city NOT LIKE '" + cityTo + "'";
     }
 
-
+   
+   
     public static Ticket[] getTicket()
     {
-        int size = list.size();
+        
         Ticket[] a = new Ticket[size];
         for (int i = 0; i < size ;i++)
         {
@@ -90,7 +110,7 @@ public class SelectTicket {
     }
     public static int getCount()
     {
-        return list.size();
+        return size;
     }
 }
 

@@ -29,20 +29,21 @@ public class FormNum3 extends JFrame {
     static JFrame form3 = new JFrame("form3");
     JButton conferm;
     JTextField email,numberOfCard,name,secondName;
-    JLabel emailLabel, numberOfCardLabel, nameLabel, secondNameLabel;
+    JLabel emailLabel, numberOfCardLabel, nameLabel, secondNameLabel, ticket1;
     static Travaler travaler;
-    static Ticket ticket;
+    static Ticket ticket = FormNum2.selectedTicket;
     ActionListener actionPerformed;
 
     public FormNum3() {
-        form3.setSize(1200, 600);
-        //frame.setResizable(false);
+        form3.setSize(520, 600);
+        form3.setResizable(false);
         form3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         form3.setLocationRelativeTo(null);
         form3.setLocationRelativeTo(null);
         form3.setLayout(new FlowLayout());
         form3.setVisible(true);
-
+        
+        ticket1 = new JLabel(FormNum2.selectedTicket.cityFrom + " " + FormNum2.selectedTicket.cityTo + " " + FormNum2.selectedTicket.price);
         emailLabel = new JLabel("Your email");
         email = new JTextField(10);
 

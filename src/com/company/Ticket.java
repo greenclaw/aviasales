@@ -10,7 +10,7 @@ public class Ticket {
     Boolean roundTrip;
     String cityFrom;
     String cityTo;
-
+    public Ticket firstTicket,secondTicket;
     public Ticket () {
 
     }
@@ -28,7 +28,7 @@ public class Ticket {
         return this.price - compareTicket.price;
     }
 
-    public boolean dataCheck () {
-        return dateOfDeparture.compareTo(dateOfArrival) < 0;
+    public boolean dataCheck (String date) {
+        return date.compareTo(dateOfDeparture) < 0;
     }
 }

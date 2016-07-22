@@ -18,7 +18,7 @@ public class FormNum2 extends JFrame{
     JButton[] buttons;
     public FormNum2() throws java.lang.InterruptedException{
         form2.setSize(1200,600);
-        //frame.setResizable(false);
+        form2.setResizable(true);
         form2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         form2.setLocationRelativeTo(null);
         form2.setLocationRelativeTo(null);
@@ -26,17 +26,27 @@ public class FormNum2 extends JFrame{
         int countOfTickets = 0;
         countOfTickets = SelectTicket.getCount();
         JLabel[] ticketsLables = new JLabel[SelectTicket.getCount()];
-        ticketsLables[0] = new JLabel();
+        if(SelectTicket.getCount()>0) 
+        {
+        ticketsLables[0] = new JLabel();        
         tickets = new Ticket[SelectTicket.getCount()];
         buttons = new JButton[SelectTicket.getCount()];
         buttons[0] = new JButton();
         tickets = SelectTicket.getTicket();
+        }
         Thread.sleep(1000);
-
+        String class1;
         for(int i = 0;i<SelectTicket.getCount();i++)
         {
-            ticketsLables[i] = new JLabel(tickets[i].dateOfDeparture + "  " + tickets[i].dateOfDeparture + "  " + tickets[i].cityFrom + "  " + tickets[i].cityTo);
-            buttons[i]= new JButton("Button "+ i);
+        	if((class1 = tickets[i].getClass().toString()).equals("class com.company.Ticket"))
+        	{
+            ticketsLables[i] = new JLabel(tickets[i].dateOfDeparture + "  " + tickets[i].dateOfArrival + "  " + tickets[i].cityFrom + "  " + tickets[i].cityTo);
+        	}
+        	else
+        	{
+        		ticketsLables[i] = new JLabel(tickets[i].firstTicket.dateOfDeparture + "  " + tickets[i].firstTicket.dateOfArrival + "  " + tickets[i].firstTicket.cityFrom + "  " + tickets[i].firstTicket.cityTo + "   ----->   " + tickets[i].secondTicket.dateOfDeparture + "  " + tickets[i].secondTicket.dateOfArrival + "  " + tickets[i].secondTicket.cityFrom + "  " + tickets[i].secondTicket.cityTo);	
+        	}
+            buttons[i]= new JButton("Купить билет");
             form2.add(ticketsLables[i]);
             form2.add(buttons[i]);
         }
